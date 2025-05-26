@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.sqlDelight)
+    alias(libs.plugins.ktor)
+
 }
 
 kotlin {
@@ -31,6 +33,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.sqlite.driver)
+            implementation(libs.ktor.serialization.kotlinx.json)
             //put your multiplatform dependencies here
         }
         androidMain.dependencies {
