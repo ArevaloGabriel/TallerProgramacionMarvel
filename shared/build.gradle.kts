@@ -34,13 +34,19 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.sqlite.driver)
             implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.logging)
+            implementation(libs.ktor.client.content.negotiation)
+
             //put your multiplatform dependencies here
         }
         androidMain.dependencies {
             implementation(libs.android.driver)
+            implementation(libs.ktor.client.android)
         }
         iosMain.dependencies {
             implementation(libs.native.driver)
+            implementation(libs.ktor.client.darwin)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
