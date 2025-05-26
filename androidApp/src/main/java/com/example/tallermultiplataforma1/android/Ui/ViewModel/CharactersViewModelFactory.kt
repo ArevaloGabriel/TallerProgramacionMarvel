@@ -1,4 +1,4 @@
-package com.example.tallermultiplataforma1.android.ViewModel
+package com.example.tallermultiplataforma1.android.Ui.ViewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
