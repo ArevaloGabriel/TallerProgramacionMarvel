@@ -2,29 +2,37 @@ package com.example.tallermultiplataforma1.android.ViewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.tallermultiplataforma1.android.Data.Api.MarvelCharactersClient
-import com.example.tallermultiplataforma1.android.Data.Api.PublicKeyInterceptor
-import com.example.tallermultiplataforma1.android.Data.repository.RetrofitCharactersRepository
+
+
+import com.example.tallermultiplataforma1.Data.Repository.KtorCharactersRepository
+import com.example.tallermultiplataforma1.Data.CharacterService
+
 import okhttp3.OkHttpClient
-import  com.example.tallermultiplataforma1.android.Data.Api.CharactersService
+import com.example.tallermultiplataforma1.Data.Repository.CharactersRepository
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.android.Android
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.serialization.kotlinx.json.json
+import kotlinx.serialization.json.Json
+import com.example.tallermultiplataforma1.Data.Remote.KtorMarvelClient
+
 class CharactersViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor(PublicKeyInterceptor())
-            .build()
+        val client = HttpClient(Android) {
+            install(ContentNegotiation) {
+                json(Json {
+                    ignoreUnknownKeys = true
+                    isLenient = true
+                })
+            }
+        }
 
-        val retrofit = Retrofit.Builder()
-            .client(okHttpClient)
-            .baseUrl("https://gateway.marvel.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        val apiClient = KtorMarvelClient(client)
+        val repository = KtorCharactersRepository(apiClient)
+        val service = CharacterService(repository)
 
-        val apiClient = retrofit.create(MarvelCharactersClient::class.java)
-
-        val charactersApi = RetrofitCharactersRepository(apiClient)
-        val charactersService = CharactersService(charactersApi)
-        return CharactersViewModel(charactersService) as T
+        return CharactersViewModel(service) as T
     }
 }

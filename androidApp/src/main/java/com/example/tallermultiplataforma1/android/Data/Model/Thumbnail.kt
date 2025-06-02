@@ -1,5 +1,5 @@
 package com.example.tallermultiplataforma1.android.Data.Model
-
+/*
 import com.google.gson.annotations.SerializedName
 
 data class Thumbnail(
@@ -13,4 +13,4 @@ data class Thumbnail(
         }
         return url
     }
-}
+}*/

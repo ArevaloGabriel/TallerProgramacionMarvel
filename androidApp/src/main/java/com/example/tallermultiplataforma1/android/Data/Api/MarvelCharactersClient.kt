@@ -1,5 +1,5 @@
 package com.example.tallermultiplataforma1.android.Data.Api
-
+/*
 import com.example.tallermultiplataforma1.android.Data.Model.CharactersResponse
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -14,4 +14,4 @@ interface MarvelCharactersClient {
         @Query("hash") md5: String
     ): CharactersResponse
 
-}
+}*/

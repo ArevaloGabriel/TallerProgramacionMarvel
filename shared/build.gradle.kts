@@ -6,6 +6,8 @@ plugins {
     alias(libs.plugins.sqlDelight)
     alias(libs.plugins.ktor)
 
+
+
 }
 
 kotlin {

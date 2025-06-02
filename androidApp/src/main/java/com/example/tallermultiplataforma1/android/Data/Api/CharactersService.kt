@@ -1,4 +1,6 @@
+/*
 package com.example.tallermultiplataforma1.android.Data.Api
+
 
 import com.example.tallermultiplataforma1.android.Data.repository.CharactersRepository
 import com.example.tallermultiplataforma1.android.Utils.PRIVATE_KEY
@@ -66,4 +68,4 @@ class CharactersService(private val charactersRepository: CharactersRepository) 
         }
 
     }
-}
+}*/
