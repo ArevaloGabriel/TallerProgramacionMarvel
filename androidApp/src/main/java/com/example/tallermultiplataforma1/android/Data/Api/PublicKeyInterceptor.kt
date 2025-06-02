@@ -1,5 +1,5 @@
 package com.example.tallermultiplataforma1.android.Data.Api
-
+/*
 
 import com.example.tallermultiplataforma1.android.Utils.PUBLIC_KEY
 import okhttp3.Response
@@ -19,4 +19,4 @@ class PublicKeyInterceptor : okhttp3.Interceptor {
                 .build()
         )
     }
-}
+}*/

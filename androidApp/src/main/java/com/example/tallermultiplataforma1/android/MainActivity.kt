@@ -34,8 +34,8 @@ import coil.compose.AsyncImage
 import com.example.tallermultiplataforma1.Greeting
 import com.example.tallermultiplataforma1.android.ViewModel.CharactersViewModel
 import com.example.tallermultiplataforma1.android.ViewModel.CharactersViewModelFactory
-import com.example.tallermultiplataforma1.android.Data.Model.Character
 
+import com.example.tallermultiplataforma1.Data.Model.MarvelCharacter
 
 class MainActivity : ComponentActivity() {
 
@@ -54,7 +54,7 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun CharacterListScreen(viewModel: CharactersViewModel) {
-        var characters by remember { mutableStateOf<List<Character>>(emptyList()) }
+        var characters by remember { mutableStateOf<List<MarvelCharacter>>(emptyList()) }
 
         LaunchedEffect(Unit) {
             characters = viewModel.characters()
@@ -68,7 +68,7 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun CharacterItem(character: Character) {
+    fun CharacterItem(character: MarvelCharacter) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()

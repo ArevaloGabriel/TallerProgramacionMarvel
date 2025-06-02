@@ -1,14 +1,16 @@
 package com.example.tallermultiplataforma1.android.ViewModel
 
 import androidx.lifecycle.ViewModel
-import com.example.tallermultiplataforma1.android.Data.Api.CharactersService
-import com.example.tallermultiplataforma1.android.Data.Model.Character
-
-class CharactersViewModel(private val charactersService: CharactersService) : ViewModel() {
 
 
+import com.example.tallermultiplataforma1.Data.CharacterService
+import com.example.tallermultiplataforma1.Data.Model.MarvelCharacter
 
-    suspend fun characters():List<Character> {
-        return charactersService.getCharacters()
+class CharactersViewModel(private val characterService: CharacterService) : ViewModel() {
+
+
+
+    suspend fun characters():List<MarvelCharacter> {
+        return characterService.getCharacters()
     }
 }

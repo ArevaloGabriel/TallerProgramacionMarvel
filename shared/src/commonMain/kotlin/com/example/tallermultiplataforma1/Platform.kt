@@ -8,7 +8,3 @@ interface Platform {
 
 expect fun getPlatform(): Platform
 
-expect class DatabaseDriverFactory {
-    fun createDriver(): SqlDriver
-
-}

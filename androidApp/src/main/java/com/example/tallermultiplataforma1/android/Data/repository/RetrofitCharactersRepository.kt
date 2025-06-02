@@ -1,5 +1,5 @@
 package com.example.tallermultiplataforma1.android.Data.repository
-
+/*
 import com.example.tallermultiplataforma1.android.Data.Api.MarvelCharactersClient
 import com.example.tallermultiplataforma1.android.Data.Model.Character
 import com.example.tallermultiplataforma1.android.Data.Model.CharactersResponse
@@ -21,4 +21,4 @@ class RetrofitCharactersRepository(private val apiClient: MarvelCharactersClient
             )
         }
     }
-}
+}*/
