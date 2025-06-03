@@ -4,6 +4,7 @@ pluginManagement {
         google()
         gradlePluginPortal()
         mavenCentral()
+<<<<<<< HEAD
         maven {
             url = uri("https://company/com/maven2")
         }
@@ -11,6 +12,8 @@ pluginManagement {
         flatDir {
             dirs("libs")
         }
+=======
+>>>>>>> 3b5de0bb81d49c5a6fc56742fab4b35dd707b034
     }
 }
 

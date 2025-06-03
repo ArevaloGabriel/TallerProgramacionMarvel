@@ -4,10 +4,13 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.sqlDelight)
+<<<<<<< HEAD
     alias(libs.plugins.ktor)
 
 
 
+=======
+>>>>>>> 3b5de0bb81d49c5a6fc56742fab4b35dd707b034
 }
 
 kotlin {
@@ -35,22 +38,31 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.sqlite.driver)
+<<<<<<< HEAD
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.logging)
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.coroutines.core)
+=======
+>>>>>>> 3b5de0bb81d49c5a6fc56742fab4b35dd707b034
             //put your multiplatform dependencies here
         }
         androidMain.dependencies {
             implementation(libs.android.driver)
+<<<<<<< HEAD
             implementation(libs.ktor.client.android)
             implementation(libs.ktor.client.okhttp)
         }
         iosMain.dependencies {
             implementation(libs.native.driver)
             implementation(libs.ktor.client.darwin)
+=======
+        }
+        iosMain.dependencies {
+            implementation(libs.native.driver)
+>>>>>>> 3b5de0bb81d49c5a6fc56742fab4b35dd707b034
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -71,9 +83,12 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
+<<<<<<< HEAD
 dependencies {
     implementation(libs.androidx.compose.material.core)
 }
+=======
+>>>>>>> 3b5de0bb81d49c5a6fc56742fab4b35dd707b034
 sqldelight {
     databases {
         create("AppDatabase") {

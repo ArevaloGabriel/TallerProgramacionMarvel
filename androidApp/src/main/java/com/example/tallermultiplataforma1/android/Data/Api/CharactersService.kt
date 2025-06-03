@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 /*
 package com.example.tallermultiplataforma1.android.Data.Api
 
 
+=======
+package com.example.tallermultiplataforma1.android.Data.Api
+
+>>>>>>> 3b5de0bb81d49c5a6fc56742fab4b35dd707b034
 import com.example.tallermultiplataforma1.android.Data.repository.CharactersRepository
 import com.example.tallermultiplataforma1.android.Utils.PRIVATE_KEY
 import com.example.tallermultiplataforma1.android.Utils.PUBLIC_KEY
@@ -68,4 +73,8 @@ class CharactersService(private val charactersRepository: CharactersRepository) 
         }
 
     }
+<<<<<<< HEAD
 }*/
+=======
+}
+>>>>>>> 3b5de0bb81d49c5a6fc56742fab4b35dd707b034

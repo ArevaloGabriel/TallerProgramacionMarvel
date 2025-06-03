@@ -6,7 +6,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+<<<<<<< HEAD
             android:name=".MainActivity"
+=======
+            android:name=".Ui.MainActivity"
+>>>>>>> 3b5de0bb81d49c5a6fc56742fab4b35dd707b034
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
