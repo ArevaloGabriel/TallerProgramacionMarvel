@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.sqlDelight)
+    alias(libs.plugins.sqldelight)
     alias(libs.plugins.ktor)
 
 
@@ -34,7 +34,8 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.sqlite.driver)
+            implementation(libs.sqldelight.runtime)
+
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.logging)
@@ -44,12 +45,13 @@ kotlin {
             //put your multiplatform dependencies here
         }
         androidMain.dependencies {
+
             implementation(libs.android.driver)
             implementation(libs.ktor.client.android)
             implementation(libs.ktor.client.okhttp)
         }
         iosMain.dependencies {
-            implementation(libs.native.driver)
+
             implementation(libs.ktor.client.darwin)
         }
         commonTest.dependencies {
