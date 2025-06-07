@@ -36,6 +36,9 @@ import com.example.tallermultiplataforma1.android.ViewModel.CharactersViewModel
 import com.example.tallermultiplataforma1.android.ViewModel.CharactersViewModelFactory
 
 import com.example.tallermultiplataforma1.Data.Model.MarvelCharacter
+import kotlinx.coroutines.flow.collect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 
 class MainActivity : ComponentActivity() {
 

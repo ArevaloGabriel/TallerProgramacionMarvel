@@ -35,7 +35,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.sqldelight.runtime)
-
+           // implementation(libs.sqldelight.sqlite.driver)
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.logging)
@@ -51,7 +51,7 @@ kotlin {
             implementation(libs.ktor.client.okhttp)
         }
         iosMain.dependencies {
-
+            //implementation(libs.sqldelight.native.driver)
             implementation(libs.ktor.client.darwin)
         }
         commonTest.dependencies {
@@ -82,4 +82,8 @@ sqldelight {
             packageName.set("com.example.marvelsql")
         }
     }
+}
+repositories {
+    google()
+    mavenCentral()
 }

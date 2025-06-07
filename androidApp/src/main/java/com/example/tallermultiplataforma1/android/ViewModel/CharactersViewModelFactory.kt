@@ -3,10 +3,10 @@ package com.example.tallermultiplataforma1.android.ViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-
+import com.example.marvelsql.AppDatabase
 import com.example.tallermultiplataforma1.Data.Repository.KtorCharactersRepository
 import com.example.tallermultiplataforma1.Data.CharacterService
-
+import android.content.Context
 import okhttp3.OkHttpClient
 import com.example.tallermultiplataforma1.Data.Repository.CharactersRepository
 import retrofit2.Retrofit
@@ -17,6 +17,9 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import com.example.tallermultiplataforma1.Data.Remote.KtorMarvelClient
+import com.example.tallermultiplataforma1.Data.Local.DatabaseHelper
+import app.cash.sqldelight.db.SqlDriver
+import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 
 class CharactersViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -36,3 +39,4 @@ class CharactersViewModelFactory : ViewModelProvider.Factory {
         return CharactersViewModel(service) as T
     }
 }
+
