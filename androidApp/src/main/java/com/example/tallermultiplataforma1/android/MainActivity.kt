@@ -1,5 +1,7 @@
 package com.example.tallermultiplataforma1.android
 
+import androidx.compose.ui.platform.LocalContext
+import android.widget.Toast
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -34,38 +36,69 @@ import coil.compose.AsyncImage
 import com.example.tallermultiplataforma1.Greeting
 import com.example.tallermultiplataforma1.android.ViewModel.CharactersViewModel
 import com.example.tallermultiplataforma1.android.ViewModel.CharactersViewModelFactory
-
+import androidx.compose.runtime.rememberCoroutineScope
 import com.example.tallermultiplataforma1.Data.Model.MarvelCharacter
 import kotlinx.coroutines.flow.collect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 
+import kotlinx.coroutines.launch
+
+
+
 class MainActivity : ComponentActivity() {
 
     private val viewModel: CharactersViewModel by viewModels {
-        CharactersViewModelFactory()
+        CharactersViewModelFactory(applicationContext)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         setContent {
             CharacterListScreen(viewModel)
         }
     }
 
+    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun CharacterListScreen(viewModel: CharactersViewModel) {
+        val context = LocalContext.current
+        val scope = rememberCoroutineScope()
         var characters by remember { mutableStateOf<List<MarvelCharacter>>(emptyList()) }
 
         LaunchedEffect(Unit) {
-            characters = viewModel.characters()
+            val (result, source) = viewModel.loadCharacters()
+            characters = result
+            Toast.makeText(context, source, Toast.LENGTH_SHORT).show()
         }
 
-        LazyColumn {
-            items(characters) { character ->
-                CharacterItem(character = character)
+        Scaffold(
+            topBar = {
+                SmallTopAppBar(
+                    title = { Text("Marvel Characters") },
+                    actions = {
+                        Button(onClick = {
+                            scope.launch {
+                                val (result, source) = viewModel.loadCharacters()
+                                characters = result
+                                Toast.makeText(context, source, Toast.LENGTH_SHORT).show()
+                            }
+                        }) {
+                            Text("Actualizar")
+                        }
+                    }
+                )
+            }
+        ) { paddingValues ->
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+            ) {
+                items(characters) { character ->
+                    CharacterItem(character)
+                }
             }
         }
     }
@@ -78,16 +111,13 @@ class MainActivity : ComponentActivity() {
                 .padding(16.dp)
         ) {
             AsyncImage(
-                model = character.thumbnailUrl ?: "", // protección por si es null
+                model = character.thumbnailUrl ?: "",
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .size(80.dp)
-                    .clip(RoundedCornerShape(8.dp))
+                    .padding(end = 12.dp)
             )
-
-            Spacer(modifier = Modifier.width(12.dp))
-
             Column {
                 Text(
                     text = character.name,

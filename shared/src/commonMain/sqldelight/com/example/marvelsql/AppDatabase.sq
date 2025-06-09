@@ -1,0 +1,20 @@
+CREATE TABLE MarvelCharacterEntity (
+    id INTEGER NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    description TEXT NOT NULL,
+    thumbnailUrl TEXT NOT NULL
+);
+
+insertCharacter:
+INSERT INTO MarvelCharacterEntity(id, name, description, thumbnailUrl)
+VALUES (?, ?, ?, ?);
+
+selectAllCharacters:
+SELECT * FROM MarvelCharacterEntity;
+
+deleteAllCharacters:
+DELETE FROM MarvelCharacterEntity;
+
+selectCharacterById:
+SELECT * FROM MarvelCharacterEntity
+WHERE id = ?;

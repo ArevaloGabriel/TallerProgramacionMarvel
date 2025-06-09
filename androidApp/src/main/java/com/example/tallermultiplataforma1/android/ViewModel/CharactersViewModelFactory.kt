@@ -2,7 +2,6 @@ package com.example.tallermultiplataforma1.android.ViewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-
 import com.example.marvelsql.AppDatabase
 import com.example.tallermultiplataforma1.Data.Repository.KtorCharactersRepository
 import com.example.tallermultiplataforma1.Data.CharacterService
@@ -21,7 +20,7 @@ import com.example.tallermultiplataforma1.Data.Local.DatabaseHelper
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 
-class CharactersViewModelFactory : ViewModelProvider.Factory {
+class CharactersViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         val client = HttpClient(Android) {
             install(ContentNegotiation) {
@@ -36,7 +35,9 @@ class CharactersViewModelFactory : ViewModelProvider.Factory {
         val repository = KtorCharactersRepository(apiClient)
         val service = CharacterService(repository)
 
-        return CharactersViewModel(service) as T
+        val driver = AndroidSqliteDriver(AppDatabase.Schema, context, "marvel.db")
+        val databaseHelper = DatabaseHelper(driver)
+
+        return CharactersViewModel(service, databaseHelper) as T
     }
 }
-
