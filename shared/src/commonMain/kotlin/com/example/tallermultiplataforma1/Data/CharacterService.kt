@@ -15,23 +15,18 @@ class CharacterService(private val charactersRepository: CharactersRepository) {
         return sort(characters)
     }
 
-    // Calcula el hash MD5
+
     private fun md5(string: String): String {
         val md = MessageDigest.getInstance("MD5")
         val digest = md.digest(string.toByteArray())
         return digest.joinToString("") { "%02x".format(it) }
     }
 
-    // Ordena los personajes como pedía tu lógica original
+
     private fun sort(characters: List<MarvelCharacter>): List<MarvelCharacter> {
         return characters.sortedWith(CharacterComparator())
     }
 
-    /**
-     * Orden:
-     * - Primero los que tienen descripción, ordenados por ID ascendente.
-     * - Luego los que no tienen descripción, ordenados por ID descendente.
-     */
     private class CharacterComparator : Comparator<MarvelCharacter> {
         override fun compare(c1: MarvelCharacter, c2: MarvelCharacter): Int {
             val hasDesc1 = c1.description.isNotEmpty()

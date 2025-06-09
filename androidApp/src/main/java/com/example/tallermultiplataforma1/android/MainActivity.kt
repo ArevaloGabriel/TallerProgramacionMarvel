@@ -41,7 +41,7 @@ import com.example.tallermultiplataforma1.Data.Model.MarvelCharacter
 import kotlinx.coroutines.flow.collect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-
+import androidx.compose.ui.graphics.Color
 import kotlinx.coroutines.launch
 
 
@@ -73,10 +73,14 @@ class MainActivity : ComponentActivity() {
             Toast.makeText(context, source, Toast.LENGTH_SHORT).show()
         }
 
-        Scaffold(
+        Scaffold(containerColor = Color(0xFFBDBDBD),
             topBar = {
                 SmallTopAppBar(
-                    title = { Text("Marvel Characters") },
+                    title = { Text(" Personajes Marvel ",
+                        color = Color.White) },
+                    colors = TopAppBarDefaults.smallTopAppBarColors(
+                        containerColor = Color(0xFF000000) // gris más oscuro
+                    ),
                     actions = {
                         Button(onClick = {
                             scope.launch {
@@ -84,7 +88,11 @@ class MainActivity : ComponentActivity() {
                                 characters = result
                                 Toast.makeText(context, source, Toast.LENGTH_SHORT).show()
                             }
-                        }) {
+                        },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color(0xFF424242)
+                            )
+                            ) {
                             Text("Actualizar")
                         }
                     }
